@@ -1,14 +1,13 @@
 package com.codeup.codeupspringblog.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-class HelloController {
+public class HomeController {
 
-    @GetMapping("/")
-    @ResponseBody
-    public String hello() {
-        return "This is a londing page";
+    @GetMapping("/home")
+    public String home(){
+        return "home";
     }
 }
