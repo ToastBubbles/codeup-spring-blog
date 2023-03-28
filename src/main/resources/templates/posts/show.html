@@ -5,9 +5,11 @@
     <title>post</title>
 </head>
 <body>
+<h1 th:replace="partials :: header"></h1>
+<nav th:replace="partials :: navbar"></nav>
 
 <h1><span th:text="${post.title}"></span></h1>
 <h3><span th:text="${post.body}"></span></h3>
-
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>

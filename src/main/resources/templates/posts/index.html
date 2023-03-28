@@ -5,11 +5,12 @@
     <title>index</title>
 </head>
 <body>
+<h1 th:replace="partials :: header"></h1>
+<nav th:replace="partials :: navbar"></nav>
 
-<h1><span th:text="${results}"></span></h1>
 <div th:each="post : ${posts}">
     <p th:text="${post.title}" />
 </div>
-
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
