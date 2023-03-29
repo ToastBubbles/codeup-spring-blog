@@ -35,7 +35,7 @@ public class PostController {
     @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
 //    @ResponseBody
     public String postId(@PathVariable int id, Model model) {
-        Optional<Post> post = postDAO.findById(id);
+        Post post = postDAO.findById(id).get();
 //        model.addAttribute("id",id);
         model.addAttribute("post", post);
         return "posts/show";
