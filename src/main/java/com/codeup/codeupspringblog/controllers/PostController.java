@@ -2,6 +2,7 @@ package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.repositories.PostRepository;
+import com.codeup.codeupspringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +16,12 @@ import java.util.Optional;
 public class PostController {
 
     PostRepository postDAO;
+    UserRepository userDAO;
 
-    public PostController(PostRepository postDAO){
+    public PostController(PostRepository postDAO, UserRepository userDAO){
+
         this.postDAO = postDAO;
+        this.userDAO = userDAO;
     }
 
 
@@ -38,6 +42,7 @@ public class PostController {
         Post post = postDAO.findById(id).get();
 //        model.addAttribute("id",id);
         model.addAttribute("post", post);
+        model.addAttribute("creator", post.getOwner());
         return "posts/show";
     }
 
@@ -51,7 +56,7 @@ public class PostController {
 //    @ResponseBody
     public String postCreatedPost(@RequestParam (name="title") String title, @RequestParam (name="body") String body) {
 
-            postDAO.save(new Post(title,body));
+            postDAO.save(new Post(title,body, userDAO.findById(1L).get()));
 
 
         return "redirect:/posts";

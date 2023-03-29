@@ -10,6 +10,12 @@
 
 <h1><span th:text="${post.title}"></span></h1>
 <h3><span th:text="${post.body}"></span></h3>
+
+<h1>Created by <span th:text="${creator.username}"></span></h1>
+<h1><span th:text="${creator.email}"></span></h1>
 <footer th:replace="partials :: footer"></footer>
+
+
+
 </body>
 </html>
