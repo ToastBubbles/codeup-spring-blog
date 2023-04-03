@@ -11,13 +11,14 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String title;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = 255)
     private String body;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name ="user_id")
     private User owner;
 
 

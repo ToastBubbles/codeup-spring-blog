@@ -16,8 +16,17 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
+//    @JoinColumn(name ="user_id")
     private List<Post> posts;
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     public long getId() {
         return id;
