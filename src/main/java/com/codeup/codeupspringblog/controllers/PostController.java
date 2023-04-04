@@ -5,6 +5,7 @@ import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -71,8 +72,9 @@ public String sendEmail(){
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
 //    @ResponseBody
     public String create(@ModelAttribute Post post) {
-        System.out.println("here");
-            User creator = userDAO.findById(1L).get();
+//        System.out.println("here");
+        User creator = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         System.out.println(post.getBody());
         System.out.println(post.getTitle());
         post.setOwner(creator);
