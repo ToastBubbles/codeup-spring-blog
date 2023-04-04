@@ -40,7 +40,12 @@ public String sendEmail(){
     emailService.prepareAndSend("subjecttttt", "get shrimpeed");
     return "redirect:/posts";
 }
+    @GetMapping(path = "/")
+//    @ResponseBody
+    public String postHome() {
 
+        return "home";
+    }
 
     @GetMapping(path = "/posts")
 //    @ResponseBody
